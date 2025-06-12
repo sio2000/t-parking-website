@@ -144,7 +144,7 @@ function App() {
             {t.sections.interactiveMap}
           </h2>
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-            <img src={menuImg} alt="Menu" className="hidden md:block w-[36rem] h-[48rem] object-contain rounded-2xl shadow-2xl bg-white p-2 border border-gray-100" />
+            <img src={menuImg} alt="Menu" className="w-full md:w-[36rem] h-auto md:h-[48rem] object-contain rounded-2xl shadow-2xl bg-white p-2 border border-gray-100" />
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -172,7 +172,7 @@ function App() {
                 </li>
               </ul>
             </motion.div>
-            <img src={mapImg} alt="Map" className="hidden md:block w-[36rem] h-[48rem] object-contain rounded-2xl shadow-2xl bg-white p-2 border border-gray-100" />
+            <img src={mapImg} alt="Map" className="w-full md:w-[36rem] h-auto md:h-[48rem] object-contain rounded-2xl shadow-2xl bg-white p-2 border border-gray-100" />
           </div>
         </div>
       </section>
@@ -249,7 +249,7 @@ function App() {
               viewport={{ once: true }}
               className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-3xl p-8 flex items-center justify-center shadow-lg min-h-[320px]"
             >
-              <img src={bonusunparkImg} alt="Bonus Unpark" className="hidden md:block w-[36rem] h-[48rem] object-contain" />
+              <img src={bonusunparkImg} alt="Bonus Unpark" className="w-full md:w-[36rem] h-auto md:h-[48rem] object-contain" />
             </motion.div>
           </div>
         </div>
@@ -315,7 +315,7 @@ function App() {
               viewport={{ once: true }}
               className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-3xl p-8 flex items-center justify-center shadow-lg min-h-[320px]"
             >
-              <img src={historyImg} alt="History" className="hidden md:block w-[36rem] h-[48rem] object-contain" />
+              <img src={historyImg} alt="History" className="w-full md:w-[36rem] h-auto md:h-[48rem] object-contain" />
             </motion.div>
           </div>
         </div>
@@ -328,7 +328,7 @@ function App() {
             {language === 'el' ? t.smartSection.elTitle : t.smartSection.title}
           </h2>
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-            <img src={fuelscoreImg} alt="Fuel Score" className="hidden md:block w-[36rem] h-[48rem] object-contain rounded-2xl shadow-2xl bg-white p-2 border border-gray-100" />
+            <img src={fuelscoreImg} alt="Fuel Score" className="w-full md:w-[36rem] h-auto md:h-[48rem] object-contain rounded-2xl shadow-2xl bg-white p-2 border border-gray-100" />
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -342,7 +342,7 @@ function App() {
                 </p>
               ))}
             </motion.div>
-            <img src={timescoreImg} alt="Time Score" className="hidden md:block w-[36rem] h-[48rem] object-contain rounded-2xl shadow-2xl bg-white p-2 border border-gray-100" />
+            <img src={timescoreImg} alt="Time Score" className="w-full md:w-[36rem] h-auto md:h-[48rem] object-contain rounded-2xl shadow-2xl bg-white p-2 border border-gray-100" />
           </div>
         </div>
       </section>
