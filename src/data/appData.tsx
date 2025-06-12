@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-import React from 'react';
->>>>>>> 95d4fb1e7e38c9013a95c1aa969a0fc5373381d2
 import { MapIcon, ClockIcon, FuelIcon, ChartBarIcon, GlobeAltIcon, UserGroupIcon } from '../assets/icons';
 
 export const features = [

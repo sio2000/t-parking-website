@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { useState } from 'react';
-=======
-import React, { useState } from 'react';
->>>>>>> 95d4fb1e7e38c9013a95c1aa969a0fc5373381d2
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import FeatureCard from './components/FeatureCard';
