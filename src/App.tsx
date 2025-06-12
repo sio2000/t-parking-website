@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import FeatureCard from './components/FeatureCard';
-import StepCard from './components/StepCard';
-import PricingCard from './components/PricingCard';
-import { features, steps, plans } from './data/appData.tsx';
+import { features, steps } from './data/appData.tsx';
 import logoSidebar from './assets/images/logosidebar.png';
 import parkImage from './assets/images/park.jpg';
 import { translations, Language } from './data/translations';
