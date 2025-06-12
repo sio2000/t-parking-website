@@ -30,8 +30,11 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
+<<<<<<< HEAD
   },
   "engines": {
     "node": ">=18.0.0"
+=======
+>>>>>>> 95d4fb1e7e38c9013a95c1aa969a0fc5373381d2
   }
 } 
