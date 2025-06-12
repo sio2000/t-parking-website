@@ -8,6 +8,7 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
     minify: 'terser',
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -16,5 +17,12 @@ export default defineConfig({
         }
       }
     }
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'framer-motion']
+  },
+  server: {
+    port: 3000,
+    strictPort: true
   }
 }) 
