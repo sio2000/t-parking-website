@@ -1,19 +1,39 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { features, steps } from './data/appData.tsx';
+import { translations, Language } from './data/translations';
+import { appData } from './data/appData';
+import FeatureCard from './components/FeatureCard';
+import StepCard from './components/StepCard';
+import PricingCard from './components/PricingCard';
+import TermsPage from './components/TermsPage';
 import logoSidebar from './assets/images/logosidebar.png';
 import parkImage from './assets/images/park.jpg';
-import { translations, Language } from './data/translations';
 import fuelscoreImg from './assets/images/fuelscore.png';
 import timescoreImg from './assets/images/timescore.png';
 import menuImg from './assets/images/menu.png';
 import mapImg from './assets/images/map.png';
 import bonusunparkImg from './assets/images/bonusunpark.png';
 import historyImg from './assets/images/history.png';
+import CookiesPage from './components/CookiesPage';
+import PrivacyPage from './components/PrivacyPage';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
-function App() {
-  const [language, setLanguage] = useState<Language>('el');
+interface Feature {
+  key: string;
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+interface Step {
+  number: string;
+  key: string;
+  icon: React.ReactNode;
+}
+
+function MainPage({ language, setLanguage }: { language: Language, setLanguage: (lang: Language) => void }) {
   const t = translations[language];
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
@@ -101,7 +121,7 @@ function App() {
             {t.sections.howItWorks}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {steps.map((step, index) => (
+            {appData.steps.map((step: Step, index: number) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8, y: 60 }}
@@ -178,13 +198,13 @@ function App() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gradient-to-b from-white via-blue-50 to-white">
+      <section id="features" className="py-20 bg-gradient-to-b from-white via-blue-50 to-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16 text-blue-800 tracking-tight">
             {t.sections.features}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {features.map((feature, index) => (
+            {appData.features.map((feature: Feature, index: number) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 40 }}
@@ -209,7 +229,7 @@ function App() {
       </section>
 
       {/* Points & Rewards Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
+      <section id="points-rewards" className="py-20 bg-gradient-to-b from-blue-50 to-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16 text-blue-800 tracking-tight">
             {t.sections.pointsRewards}
@@ -256,7 +276,7 @@ function App() {
       </section>
 
       {/* Notifications & Settings Section (Merged) */}
-      <section className="py-20 bg-gradient-to-b from-white via-blue-50 to-white">
+      <section id="settings" className="py-20 bg-gradient-to-b from-white via-blue-50 to-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16 text-blue-800 tracking-tight">
             {t.sections.settings} & {t.sections.notifications}
@@ -351,31 +371,39 @@ function App() {
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <img src={logoSidebar} alt="T-Parking Logo" className="w-24 h-24 mb-4 rounded-full" />
+            <div className="flex flex-col items-center">
+              <img src={logoSidebar} alt="T-Parking Logo" className="w-24 h-24 mb-2 rounded-full" />
+              <div className="text-white text-xl font-bold text-center">T-Parking</div>
             </div>
             <div>
               <h4 className="text-lg font-semibold mb-4">{t.footer.quickLinks}</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">{t.footer.home}</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">{t.footer.features}</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">{t.footer.plans}</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">{t.footer.support}</a></li>
+                <li><a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors">{t.sections.howItWorks}</a></li>
+                <li><a href="#features" className="text-gray-400 hover:text-white transition-colors">{t.sections.features}</a></li>
+                <li><a href="#points-rewards" className="text-gray-400 hover:text-white transition-colors">{t.sections.pointsRewards}</a></li>
+                <li><a href="#settings" className="text-gray-400 hover:text-white transition-colors">{t.sections.settings}</a></li>
               </ul>
             </div>
             <div>
               <h4 className="text-lg font-semibold mb-4">{t.footer.legal}</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">{t.footer.terms}</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">{t.footer.privacy}</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">{t.footer.cookies}</a></li>
+                <li>
+                  <button
+                    onClick={() => navigate('/terms')}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    {t.footer.terms}
+                  </button>
+                </li>
+                <li><button onClick={() => navigate('/privacy')} className="text-gray-400 hover:text-white transition-colors">{t.footer.privacy[language]}</button></li>
+                <li><button onClick={() => navigate('/cookies')} className="text-gray-400 hover:text-white transition-colors">{t.footer.cookies[language]}</button></li>
               </ul>
             </div>
             <div>
               <h4 className="text-lg font-semibold mb-4">{t.footer.contact}</h4>
               <ul className="space-y-2">
                 <li className="text-gray-400 hover:text-white transition-colors">{t.footer.email}</li>
-                <li className="text-gray-400 hover:text-white transition-colors">{t.footer.phone}</li>
               </ul>
             </div>
           </div>
@@ -385,6 +413,18 @@ function App() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function App() {
+  const [language, setLanguage] = useState<Language>('el');
+  return (
+    <Routes>
+      <Route path="/" element={<MainPage language={language} setLanguage={setLanguage} />} />
+      <Route path="/terms" element={<TermsPage language={language} onBack={() => window.history.back()} />} />
+      <Route path="/cookies" element={<CookiesPage language={language} onBack={() => window.history.back()} />} />
+      <Route path="/privacy" element={<PrivacyPage language={language} onBack={() => window.history.back()} />} />
+    </Routes>
   );
 }
 

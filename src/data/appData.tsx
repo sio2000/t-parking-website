@@ -1,6 +1,6 @@
 import { MapIcon, ClockIcon, FuelIcon, ChartBarIcon, GlobeAltIcon, UserGroupIcon } from '../assets/icons';
 
-export const features = [
+const features = [
   {
     key: 'liveMap',
     icon: <MapIcon className="w-10 h-10 text-sky-500 bg-sky-100 rounded-full p-2 shadow-lg" />,
@@ -39,7 +39,7 @@ export const features = [
   }
 ];
 
-export const steps = [
+const steps = [
   {
     number: '1',
     key: 'openApp',
@@ -57,7 +57,7 @@ export const steps = [
   },
 ];
 
-export const plans = [
+const pricingPlans = [
   {
     name: 'Free',
     price: '0€',
@@ -88,4 +88,54 @@ export const plans = [
       'Family sharing'
     ]
   }
-]; 
+];
+
+const pointsRewards = [
+  {
+    key: 'earnPoints',
+    icon: <ChartBarIcon className="w-10 h-10 text-green-500 bg-green-100 rounded-full p-2 shadow-lg" />,
+    title: 'Earn Points',
+    description: 'Get points for sharing spots'
+  },
+  {
+    key: 'redeemRewards',
+    icon: <FuelIcon className="w-10 h-10 text-orange-500 bg-orange-100 rounded-full p-2 shadow-lg" />,
+    title: 'Redeem Rewards',
+    description: 'Use points for free parking'
+  },
+  {
+    key: 'levelUp',
+    icon: <UserGroupIcon className="w-10 h-10 text-yellow-500 bg-yellow-100 rounded-full p-2 shadow-lg" />,
+    title: 'Level Up',
+    description: 'Unlock exclusive benefits'
+  }
+];
+
+const notifications = [
+  {
+    key: 'spotAvailable',
+    icon: <MapIcon className="w-10 h-10 text-sky-500 bg-sky-100 rounded-full p-2 shadow-lg" />,
+    title: 'Spot Available',
+    description: 'Get notified when spots open up'
+  },
+  {
+    key: 'reservationReminder',
+    icon: <ClockIcon className="w-10 h-10 text-purple-500 bg-purple-100 rounded-full p-2 shadow-lg" />,
+    title: 'Reservation Reminder',
+    description: 'Never forget your parking time'
+  },
+  {
+    key: 'pointsUpdate',
+    icon: <ChartBarIcon className="w-10 h-10 text-green-500 bg-green-100 rounded-full p-2 shadow-lg" />,
+    title: 'Points Update',
+    description: 'Track your rewards progress'
+  }
+];
+
+export const appData = {
+  features,
+  steps,
+  pricingPlans,
+  pointsRewards,
+  notifications
+}; 
